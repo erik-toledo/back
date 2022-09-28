@@ -1,13 +1,14 @@
 const conexion = require('../database/cnfgDtbs')
 exports.save = (req,res)=>{
     const nombre = req.body.nombre;
+    console.log(req.body);
     const apellidos = req.body.apellidos
     conexion.query('INSERT INTO alumno SET ?',{nombre:nombre,apellidos:apellidos},(error)=>
     {
         if(error){
             console.log(error);
         }else{
-            res.redirect('/dashboard')
+            res.send('200 OK')
         }
 
     })
